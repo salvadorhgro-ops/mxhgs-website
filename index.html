@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HGS Consulting | Audit & Accounting · Querétaro, Mexico</title>
+<meta name="description" content="HGS Consulting — Audit, accounting, tax, payroll, and advisory services for businesses in Querétaro, Mexico. PrimeGlobal member firm. 16+ years of experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#002856;--navy-light:#0a3a6b;
+  --teal:#009CA6;--teal-light:#00b8c4;
+  --red:#D22630;
+  --gold:#FFC72C;--gold-light:#FFD966;
+  --bg:#ffffff;--bg2:#f5f7fa;--bg3:#eef1f5;
+  --card:#ffffff;--border:#e2e6ec;--border-light:#f0f2f5;
+  --text:#1a1a2e;--text2:#4a5568;--muted:#718096;
+  --white:#ffffff;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── i18n ── */
+[data-lang="es"] .en,[data-lang="en"] .es-only{display:none}
+[data-lang="en"] .en,[data-lang="es"] .es-only{display:initial}
+.section-title-es{display:none}
+[data-lang="es"] .section-title-es{display:block}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.06);transition:all .3s}
+.nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.nav-logo{display:flex;align-items:center;gap:0;text-decoration:none}
+.logo-img-wrap{height:46px;overflow:hidden}
+.logo-img-wrap img{height:62px;width:auto;object-fit:cover;object-position:top;display:block}
+.logo-consulting{font-size:10px;color:var(--teal);letter-spacing:.12em;font-weight:600;margin-top:-4px;text-align:center}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text2);transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.btn-login{background:var(--navy)!important;color:var(--white)!important;padding:10px 24px;border-radius:8px;font-weight:700!important;transition:all .2s!important}
+.btn-login:hover{background:var(--navy-light)!important;transform:translateY(-1px)}
+.lang-toggle{font-size:12px;color:var(--muted);cursor:pointer;border:1px solid var(--border);padding:5px 12px;border-radius:6px;background:transparent;font-family:var(--font);font-weight:600;transition:all .2s}
+.lang-toggle:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 48px 80px;background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 50%,#e8f4f8 100%)}
+.hero::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,rgba(0,156,166,.04),rgba(0,40,86,.03));pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
+.hero-content{display:flex;flex-direction:column;justify-content:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,156,166,.08);border:1px solid rgba(0,156,166,.15);padding:6px 16px;border-radius:20px;font-size:12px;color:var(--teal);font-weight:600;margin-bottom:24px;width:fit-content}
+.hero-badge a{color:var(--teal);text-decoration:none;font-weight:600}
+.hero-badge a:hover{text-decoration:underline}
+h1{font-size:48px;font-weight:900;line-height:1.1;color:var(--navy);margin-bottom:20px}
+h1 span{color:var(--teal)}
+.hero-desc{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:32px;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .25s;cursor:pointer;border:none;font-family:var(--font)}
+.btn-primary{background:var(--navy);color:var(--white);box-shadow:0 4px 16px rgba(0,40,86,.2)}
+.btn-primary:hover{background:var(--navy-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,40,86,.25)}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal)}
+
+/* Hero stats card */
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
+.hero-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:32px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.02)}
+.hero-card-tag{font-size:11px;color:var(--teal);letter-spacing:.15em;font-weight:700;margin-bottom:16px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--bg2);border:1px solid var(--border-light);border-radius:14px;padding:20px;text-align:center;transition:all .3s}
+.stat:hover{border-color:var(--teal);box-shadow:0 4px 12px rgba(0,156,166,.08)}
+.stat-value{font-size:32px;font-weight:900;color:var(--navy)}
+.stat-label{font-size:11px;color:var(--muted);margin-top:4px;font-weight:500}
+
+/* Colored accent bar */
+.accent-bar{height:4px;display:flex;margin-top:20px;border-radius:2px;overflow:hidden}
+.accent-bar div{flex:1}
+.ab-navy{background:var(--navy)}
+.ab-teal{background:var(--teal)}
+.ab-red{background:var(--red)}
+.ab-gold{background:var(--gold)}
+
+/* ── SECTIONS ── */
+section{padding:100px 48px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{font-size:11px;color:var(--teal);letter-spacing:.2em;font-weight:700;margin-bottom:10px}
+.section-title{font-size:34px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.section-title-es{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:4px}
+.section-desc{font-size:14px;color:var(--text2);max-width:600px;margin:0 auto;line-height:1.7}
+
+/* ── SERVICES ── */
+#services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.service-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.06)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);opacity:0;transition:opacity .3s}
+.service-card:hover::before{opacity:1}
+.service-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.service-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.service-card p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* ── DIFFERENTIATORS ── */
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.diff-item{text-align:center;padding:28px 16px;background:var(--white);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+.diff-item:hover{border-color:var(--teal);transform:translateY(-2px)}
+.diff-num{font-size:42px;font-weight:900;color:var(--navy);line-height:1}
+.diff-label{font-size:12px;color:var(--text2);margin-top:8px;line-height:1.5}
+
+/* ── CHABOTA ── */
+#chabota{background:var(--bg2)}
+.chabota-section{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.chabota-left{display:flex;flex-direction:column;align-items:center;gap:20px}
+.chabota-card{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:32px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.06);max-width:340px;width:100%}
+.chabota-card img{width:120px;height:120px;border-radius:50%;border:4px solid var(--gold);margin-bottom:14px;object-fit:cover}
+.chabota-card .coming{display:inline-block;background:var(--gold);color:var(--navy);padding:5px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.chabota-video{width:100%;max-width:340px;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.chabota-video video{width:100%;display:block}
+.chabota-info h3{font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.chabota-info h3 span{color:var(--teal)}
+.chabota-info .es-sub{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:16px}
+.chabota-info p{color:var(--text2);line-height:1.7;margin-bottom:20px;font-size:14px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.skill-tag{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.skill-tag.teal{background:rgba(0,156,166,.08);color:var(--teal)}
+.skill-tag.navy{background:rgba(0,40,86,.06);color:var(--navy)}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:14px;align-items:flex-start}
+.contact-icon{width:44px;height:44px;border-radius:12px;background:rgba(0,156,166,.08);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.contact-item p{font-size:13px;color:var(--text2)}
+.contact-cta{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.contact-cta h4{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.contact-cta p{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6;max-width:280px}
+
+/* ── FOOTER ── */
+.footer{padding:40px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-left{display:flex;align-items:center;gap:12px}
+.footer-text{font-size:11px;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:12px;color:var(--text2);text-decoration:none;font-weight:500}
+.footer-links a:hover{color:var(--teal)}
+
+/* ── LOGIN MODAL ── */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,40,86,.4);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.login-box{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:40px;width:400px;max-width:90vw;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.12)}
+.login-box h2{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:4px;text-align:center}
+.login-box .sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:28px}
+.login-field{margin-bottom:16px}
+.login-field label{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;display:block;letter-spacing:.05em}
+.login-field input{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .2s}
+.login-field input:focus{border-color:var(--teal);background:var(--white)}
+.login-field input::placeholder{color:var(--muted)}
+.login-submit{width:100%;padding:14px;background:var(--navy);color:var(--white);border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font);margin-top:8px;transition:all .2s}
+.login-submit:hover{background:var(--navy-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,40,86,.2)}
+.login-error{display:none;color:var(--red);font-size:12px;text-align:center;margin-top:12px}
+.login-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.login-close:hover{background:var(--bg2);color:var(--text)}
+.login-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted);font-size:11px}
+.login-divider::before,.login-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── ANIMATIONS ── */
+.animate{opacity:0;transform:translateY(24px);transition:all .5s ease}
+.animate.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  h1{font-size:32px}
+  .hero-desc{margin:0 auto 16px}
+  .hero-actions{justify-content:center}
+  .services-grid{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:repeat(2,1fr)}
+  .chabota-section{grid-template-columns:1fr;text-align:center}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links .desk{display:none}
+  .nav{padding:12px 20px}
+  .hero{padding:100px 20px 60px}
+  section{padding:60px 20px}
+  .footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <div>
+      <div class="logo-img-wrap"><img src="logo.jpg" alt="HGS"></div>
+      <div class="logo-consulting">CONSULTING</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services" class="desk"><span class="en">Services</span><span class="es-only">Servicios</span></a>
+    <a href="#why-hgs" class="desk"><span class="en">Why HGS</span><span class="es-only">¿Por qué HGS?</span></a>
+    <a href="#chabota" class="desk">ChaBOTa</a>
+    <a href="#contact" class="desk"><span class="en">Contact</span><span class="es-only">Contacto</span></a>
+    <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">ES</button>
+    <a href="#" class="btn-login" onclick="openLogin();return false"><span class="en">Sign In</span><span class="es-only">Ingresar</span></a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <a href="https://www.primeglobal.net/" target="_blank" rel="noopener">PrimeGlobal</a>
+        <span class="en">Member · 120 Countries</span>
+        <span class="es-only">Miembro · 120 Países</span>
+      </div>
+      <h1>
+        <span class="en">Proactive <span>accounting</span> for growing businesses</span>
+        <span class="es-only">Contabilidad <span>proactiva</span> para empresas en crecimiento</span>
+      </h1>
+      <p class="hero-desc">
+        <span class="en">16+ years delivering audit, tax, payroll, and advisory services to companies in Querétaro, Mexico. Technology-driven, internationally connected.</span>
+        <span class="es-only">Más de 16 años transformando la contabilidad de empresas en Querétaro. Auditoría, fiscal, nómina y consultoría con tecnología de punta.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary" onclick="openLogin();return false">🔐 <span class="en">Sign In to Portal</span><span class="es-only">Ingresar al Portal</span></a>
+        <a href="#contact" class="btn btn-outline"><span class="en">Contact Us</span><span class="es-only">Contáctanos</span></a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-tag"><span class="en">HGS AT A GLANCE</span><span class="es-only">HGS EN NÚMEROS</span></div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-value">30+</div><div class="stat-label"><span class="en">Active clients</span><span class="es-only">Clientes activos</span></div></div>
+          <div class="stat"><div class="stat-value">16</div><div class="stat-label"><span class="en">Years of experience</span><span class="es-only">Años de experiencia</span></div></div>
+          <div class="stat"><div class="stat-value">120</div><div class="stat-label"><span class="en">Countries (PrimeGlobal)</span><span class="es-only">Países (PrimeGlobal)</span></div></div>
+          <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">ChaBOTa fiscal bot</div></div>
+        </div>
+        <div class="accent-bar">
+          <div class="ab-navy"></div><div class="ab-teal"></div><div class="ab-red"></div><div class="ab-gold"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><span class="en">SERVICES</span><span class="es-only">SERVICIOS</span></div>
+      <div class="section-title">
+        <span class="en">Comprehensive accounting solutions</span>
+        <span class="es-only">Soluciones contables integrales</span>
+      </div>
+      <div class="section-desc">
+        <span class="en">From monthly bookkeeping to strategic advisory, we cover every fiscal need of your business.</span>
+        <span class="es-only">De la contabilidad mensual a la asesoría estratégica, cubrimos cada necesidad fiscal de tu empresa.</span>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(0,40,86,.06)">📊</div>
+        <h3><span class="en">Monthly Accounting</span><span class="es-only">Contabilidad Mensual</span></h3>
+        <p><span class="en">Bookkeeping, trial balances, financial statements, and corporate reporting. Compatible with ExpertEasy, CONTPAQi, and CROL.</span><span class="es-only">Registro contable, balanzas de comprobación, estados financieros e información corporativa. Compatible con ExpertEasy, CONTPAQi y CROL.</span></p>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(0,156,166,.08)">💰</div>
+        <h3><span class="en">Tax & Compliance</span><span class="es-only">Fiscal e Impuestos</span></h3>
+        <p><span class="en">ISR, IVA, DIOT, ISN — monthly and annual filings. Provisional payments, annual returns for corporations and individuals.</span><span class="es-only">ISR, IVA, DIOT, ISN — declaraciones mensuales y anuales. Pagos provisionales y declaraciones anuales para personas morales y físicas.</span></p>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(210,38,48,.06)">👥</div>
+        <h3><span class="en">Payroll & Social Security</span><span class="es-only">Nómina e IMSS</span></h3>
+        <p><span class="en">Payroll processing, CFDI digital stamps, IMSS/INFONAVIT, ISN Querétaro. Nóminax integration.</span><span class="es-only">Procesamiento de nómina, timbrado CFDI, IMSS/INFONAVIT, ISN Querétaro. Integración con Nóminax.</span></p>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(255,199,44,.1)">🔍</div>
+        <h3><span class="en">Audit & Review</span><span class="es-only">Auditoría y Revisión</span></h3>
+        <p><span class="en">Working papers review, bank reconciliation, cost-of-sales analysis, and XML fiscal surveillance.</span><span class="es-only">Revisión de papeles de trabajo, conciliación bancaria, análisis de costo de ventas y vigilancia fiscal XML.</span></p>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(0,156,166,.08)">🌎</div>
+        <h3><span class="en">International Trade</span><span class="es-only">Comercio Exterior</span></h3>
+        <p><span class="en">Foreign Trade Complement 2.0, USD/EUR operations, customs declaration matching. US subsidiary support.</span><span class="es-only">Complemento de Comercio Exterior 2.0, operaciones USD/EUR, amarre de pedimentos. Soporte para subsidiarias en EUA.</span></p>
+      </div>
+      <div class="service-card animate">
+        <div class="service-icon" style="background:rgba(0,40,86,.06)">📋</div>
+        <h3><span class="en">REPSE & Specialized Services</span><span class="es-only">REPSE y Cumplimiento</span></h3>
+        <p><span class="en">Specialized Service Provider Registry. EFOS 69-B surveillance, payment complements (REP).</span><span class="es-only">Registro de Prestadoras de Servicios Especializados. Vigilancia EFOS 69-B, complementos de pago (REP).</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY HGS ═══ -->
+<section id="why-hgs">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><span class="en">WHY HGS</span><span class="es-only">¿POR QUÉ HGS?</span></div>
+      <div class="section-title">
+        <span class="en">Experience that delivers results</span>
+        <span class="es-only">Experiencia que se nota en resultados</span>
+      </div>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item animate">
+        <div class="diff-num">300+</div>
+        <div class="diff-label"><span class="en">Member firms in</span><span class="es-only">Firmas miembro de</span><br><a href="https://www.primeglobal.net/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;font-weight:600">PrimeGlobal</a></div>
+      </div>
+      <div class="diff-item animate">
+        <div class="diff-num">100%</div>
+        <div class="diff-label"><span class="en">Digital — proprietary<br>technology platform</span><span class="es-only">Digital — plataforma<br>tecnológica propia</span></div>
+      </div>
+      <div class="diff-item animate">
+        <div class="diff-num">6</div>
+        <div class="diff-label"><span class="en">Custom-built fiscal<br>automation tools</span><span class="es-only">Herramientas de<br>automatización fiscal propias</span></div>
+      </div>
+      <div class="diff-item animate">
+        <div class="diff-num">0</div>
+        <div class="diff-label"><span class="en">SAT audit findings<br>across all clients</span><span class="es-only">Observaciones del SAT<br>en todos los clientes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHABOTA ═══ -->
+<section id="chabota">
+  <div class="section-inner">
+    <div class="chabota-section">
+      <div class="chabota-left">
+        <div class="chabota-card">
+          <img src="chavota.png" alt="Conta ChaBOTa">
+          <div class="coming">COMING SOON</div>
+          <div style="font-size:20px;font-weight:800;color:var(--navy)">Conta Cha<span style="color:var(--teal)">BOT</span>a</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">SALVADOR de empresarios</div>
+        </div>
+        <div class="chabota-video">
+          <video autoplay muted loop playsinline controls>
+            <source src="chabota-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="chabota-info">
+        <div class="section-tag">COMING SOON</div>
+        <h3>Conta Cha<span>BOT</span>a</h3>
+        <div class="es-sub"><span class="en">Your intelligent fiscal assistant</span><span class="es-only">Tu asistente fiscal inteligente</span></div>
+        <p>
+          <span class="en">Our intelligent fiscal assistant is almost ready. Soon you'll be able to query your tax data, resolve invoicing questions, and get deduction advice — all from WhatsApp.</span>
+          <span class="es-only">Nuestro asistente fiscal inteligente está casi listo. Pronto podrás consultar tus datos fiscales, resolver dudas de facturación y recibir asesoría de deducciones — todo desde WhatsApp.</span>
+        </p>
+        <div class="skill-tags">
+          <span class="skill-tag teal">📋 <span class="en">Tax ID Lookup</span><span class="es-only">Consulta RFC</span></span>
+          <span class="skill-tag teal">🏢 <span class="en">SAT Activity</span><span class="es-only">Actividad SAT</span></span>
+          <span class="skill-tag teal">🧾 <span class="en">Invoice Data</span><span class="es-only">Datos de Factura</span></span>
+          <span class="skill-tag navy">📊 <span class="en">Deductions</span><span class="es-only">Deducciones</span></span>
+          <span class="skill-tag navy">💬 <span class="en">CFDI Help</span><span class="es-only">Ayuda CFDI</span></span>
+        </div>
+        <a href="#contact" class="btn btn-outline">🔔 <span class="en">Notify me when it launches</span><span class="es-only">Avísame cuando se lance</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><span class="en">CONTACT</span><span class="es-only">CONTACTO</span></div>
+      <div class="section-title">
+        <span class="en">Let's talk about your business</span>
+        <span class="es-only">Hablemos de tu empresa</span>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4><span class="en">Location</span><span class="es-only">Ubicación</span></h4><p>Querétaro, Qro., Mexico</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email</h4><p>contacto@mxhgs.com</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div><h4><span class="en">Global Network</span><span class="es-only">Red Global</span></h4><p><span class="en">Member of</span><span class="es-only">Miembro de</span> <a href="https://www.primeglobal.net/" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600">PrimeGlobal</a> · 300+ <span class="en">firms</span><span class="es-only">firmas</span>, 120 <span class="en">countries</span><span class="es-only">países</span></p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div><h4><span class="en">Office Hours</span><span class="es-only">Horario</span></h4><p><span class="en">Monday – Friday</span><span class="es-only">Lunes – Viernes</span> · 8:00 AM — 5:00 PM CST</p></div>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <div style="font-size:48px;margin-bottom:16px">🤝</div>
+        <h4><span class="en">Free Consultation</span><span class="es-only">Consulta sin Costo</span></h4>
+        <p><span class="en">We analyze your company's fiscal situation and present a customized proposal.</span><span class="es-only">Analizamos la situación fiscal de tu empresa y presentamos una propuesta personalizada.</span></p>
+        <a href="mailto:contacto@mxhgs.com?subject=Information%20Request%20—%20HGS" class="btn btn-primary">📧 <span class="en">Request Information</span><span class="es-only">Solicitar Información</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-left">
+    <div>
+      <div style="height:30px;overflow:hidden"><img src="logo.jpg" alt="HGS" style="height:42px;width:auto;object-fit:cover;object-position:top;display:block"></div>
+      <div style="font-size:8px;color:var(--teal);letter-spacing:.12em;font-weight:600;margin-top:-2px;text-align:center">CONSULTING</div>
+    </div>
+  </div>
+  <div class="footer-text">© 2026 HGS — Hurtado Guerrero y Socios SC. <span class="en">All rights reserved.</span><span class="es-only">Todos los derechos reservados.</span> · Querétaro, Qro., Mexico</div>
+  <div class="footer-links">
+    <a href="https://www.primeglobal.net/" target="_blank" rel="noopener">PrimeGlobal</a>
+    <a href="#" onclick="openLogin();return false"><span class="en">Sign In</span><span class="es-only">Ingresar</span></a>
+    <a href="mailto:contacto@mxhgs.com"><span class="en">Contact</span><span class="es-only">Contacto</span></a>
+  </div>
+</footer>
+
+<!-- ═══ LOGIN MODAL ═══ -->
+<div class="modal-overlay" id="login-modal" onclick="if(event.target===this)closeLogin()">
+  <div class="login-box">
+    <button class="login-close" onclick="closeLogin()">✕</button>
+    <div style="text-align:center;margin-bottom:8px">
+      <div style="height:36px;overflow:hidden;display:inline-block"><img src="logo.jpg" alt="HGS" style="height:50px;width:auto;object-fit:cover;object-position:top;display:block"></div>
+      <div style="font-size:10px;color:var(--teal);letter-spacing:.12em;font-weight:600;margin-top:-2px">CONSULTING</div>
+    </div>
+    <h2><span class="en">Welcome Back</span><span class="es-only">Bienvenido</span></h2>
+    <div class="sub"><span class="en">Sign in to your HGS portal</span><span class="es-only">Ingresa a tu portal HGS</span></div>
+    <div class="login-field">
+      <label>EMAIL</label>
+      <input type="email" id="login-email" placeholder="you@company.com" onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()">
+    </div>
+    <div class="login-field">
+      <label><span class="en">PASSWORD</span><span class="es-only">CONTRASEÑA</span></label>
+      <input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-submit" id="login-btn" onclick="doLogin()"><span class="en">Sign In</span><span class="es-only">Ingresar</span></button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-divider">or</div>
+    <div style="text-align:center">
+      <a href="mailto:contacto@mxhgs.com?subject=Portal%20Access%20Request" style="font-size:13px;color:var(--teal);text-decoration:none">
+        <span class="en">Don't have an account? Request access</span>
+        <span class="es-only">¿No tienes cuenta? Solicita acceso</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// ── Supabase ──
+const SUPA_URL = 'https://pzgrscgapiznmtkoubqs.supabase.co';
+const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6Z3JzY2dhcGl6bm10a291YnFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxOTg5MTYsImV4cCI6MjA4OTc3NDkxNn0.M8Wmhj1U65CLKzyDHeTtxpip2mj6cEOGtMLiPuR7gnQ';
+let supa = null;
+try { supa = supabase.createClient(SUPA_URL, SUPA_ANON); } catch(e) {}
+
+// ── i18n ──
+function toggleLang() {
+  const body = document.body;
+  const btn = document.getElementById('lang-btn');
+  if (body.dataset.lang === 'en') {
+    body.dataset.lang = 'es';
+    btn.textContent = 'EN';
+    document.documentElement.lang = 'es';
+  } else {
+    body.dataset.lang = 'en';
+    btn.textContent = 'ES';
+    document.documentElement.lang = 'en';
+  }
+}
+
+// ── Login ──
+function openLogin() { document.getElementById('login-modal').classList.add('open'); setTimeout(() => document.getElementById('login-email').focus(), 100); }
+function closeLogin() { document.getElementById('login-modal').classList.remove('open'); }
+
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+  const isEs = document.body.dataset.lang === 'es';
+  if (!email || !pass) { errEl.textContent = isEs ? 'Ingresa email y contraseña' : 'Please enter email and password'; errEl.style.display = 'block'; return; }
+  btn.textContent = isEs ? 'Verificando...' : 'Verifying...'; btn.disabled = true; errEl.style.display = 'none';
+  try {
+    if (!supa) throw new Error('No connection');
+    const { data, error } = await supa.auth.signInWithPassword({ email, password: pass });
+    if (error) throw error;
+    const { data: userRow } = await supa.from('usuarios').select('rol').eq('auth_user_id', data.user.id).single();
+    const rol = userRow?.rol || 'usuario';
+    if (rol === 'cliente') {
+      window.location.href = '/portal';
+    } else {
+      window.location.href = 'https://hgsso.netlify.app/';
+    }
+  } catch(e) {
+    errEl.textContent = isEs ? 'Email o contraseña incorrectos' : 'Invalid email or password';
+    errEl.style.display = 'block';
+    btn.innerHTML = isEs ? 'Ingresar' : 'Sign In';
+    btn.disabled = false;
+  }
+}
+
+// ── Nav scroll ──
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50));
+
+// ── Scroll animations ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
