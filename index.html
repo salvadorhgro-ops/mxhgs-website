@@ -488,12 +488,21 @@ async function doLogin() {
     if (!supa) throw new Error('No connection');
     const { data, error } = await supa.auth.signInWithPassword({ email, password: pass });
     if (error) throw error;
-    const { data: userRow } = await supa.from('usuarios').select('rol').eq('auth_user_id', data.user.id).single();
+    const { data: userRow } = await supa.from('usuarios').select('rol,nombre').eq('auth_user_id', data.user.id).single();
     const rol = userRow?.rol || 'usuario';
+    const token = data.session?.access_token || '';
+    const refresh = data.session?.refresh_token || '';
     if (rol === 'cliente') {
       window.location.href = '/portal';
     } else {
-      window.location.href = 'https://hgsso.netlify.app/';
+      // SSO: pass auth tokens to SO via URL hash (never sent to server)
+      window.location.href = 'https://hgsso.netlify.app/#sso=' + encodeURIComponent(JSON.stringify({
+        access_token: token,
+        refresh_token: refresh,
+        email: email,
+        nombre: userRow?.nombre || email.split('@')[0],
+        rol: rol
+      }));
     }
   } catch(e) {
     errEl.textContent = isEs ? 'Email o contraseña incorrectos' : 'Invalid email or password';
