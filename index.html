@@ -496,7 +496,7 @@ async function doLogin() {
       window.location.href = '/portal';
     } else {
       // SSO: pass auth tokens to SO via URL hash (never sent to server)
-      window.location.href = 'https://hgsso.netlify.app/#sso=' + encodeURIComponent(JSON.stringify({
+      window.location.href = 'https://hgsapp.vercel.app/#sso=' + encodeURIComponent(JSON.stringify({
         access_token: token,
         refresh_token: refresh,
         email: email,
